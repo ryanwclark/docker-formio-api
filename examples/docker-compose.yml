@@ -1,0 +1,77 @@
+version: '3.7'
+services:
+  
+  formio-api-app:
+    image: ryanwclark/formio-api
+    container_name: formio-api-app
+    labels:
+    - traefik.enable=true
+    - traefik.frontend.rule=Host:formio.example.com
+    - traefik.port=80
+    - traefik.protocol=http
+    - traefik.docker.network=proxy
+    - traefik.backend=formio-api-app
+    volumes:
+    - ./templates:/app/templates
+    environment:
+    - VIRTUAL_HOST=formio.example.com
+    - VIRTUAL_NETWORK=proxy
+    - VIRTUAL_PORT=3001
+    - LETSENCRYPT_HOST=formio.example.com
+    - LETSENCRYPT_EMAIL=email@example.com
+
+    - ZABBIX_HOSTNAME=formio-app
+
+    - DB_HOST=formio-db-mongo
+
+    - ROOT_EMAIL=admin@example.com
+    - ROOT_PASS=password
+
+    - DEBUG_MODE=FALSE
+    - PROJECT_TEMPLATE=default
+    networks:
+    - proxy
+    - internal
+    - services
+    restart: always
+
+  formio-db-mongo:
+    image: mongo
+    container_name: formio-db-mongo
+    volumes:
+    - ./db:/data/db
+    command: mongod --smallfiles
+    environment:
+    - ZABBIX_HOSTNAME=formio-db-mongo
+    networks:
+    - internal
+    - services
+    restart: unless-stopped 
+
+  formio-db-mongo-backup:
+    image: ryanwclark/db-backup
+    container_name: formio-db-mongo-backup
+    links:
+    - formio-db-mongo
+    volumes:
+    - ./dbbackup:/backups
+    environment:
+    - DB_TYPE=mongo
+    - DB_HOST=formio-db-mongo
+    - DB_DUMP_FREQ=1440
+    - DB_DUMP_BEGIN=0000
+    - DB_CLEANUP_TIME=8640
+    - MD5=TRUE
+    - COMPRESSION=GZ
+    networks:
+    - internal
+    - services
+    restart: always
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
+  services:
+    external: true
