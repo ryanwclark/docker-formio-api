@@ -2,7 +2,7 @@ FROM ryanwclark/nodejs:latest
 LABEL maintainer="Ryan Clark (ryanwclark@yahoo.com)"
 
 ### Set Defaults
-ENV FORMIO_VERSION=v1.90.9 \
+ENV FORMIO_VERSION=v2.2.3 \
     FORMIO_CLIENT_VERSION=master \
     ENABLE_SMTP=FALSE \
     ENABLE_CRON=FALSE \
