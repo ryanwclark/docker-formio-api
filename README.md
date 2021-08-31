@@ -1,8 +1,8 @@
 # hub.docker.com/r/ryanwclark/formio-api
 
-[![Build Status](https://img.shields.io/docker/build/ryanwclark/formio-api.svg)](https://hub.docker.com/r/ryanwclark/formio-api)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ryanwclark/formio-api.svg)](https://hub.docker.com/r/ryanwclark/formio-api)
-[![Docker Stars](https://img.shields.io/docker/stars/ryanwclark/formio-api.svg)](https://hub.docker.com/r/ryanwclark/formio-api)
+[![Build Status](https://img.shields.io/docker/build/ryanwclark/formio.svg)](https://hub.docker.com/r/ryanwclark/formio)
+[![Docker Pulls](https://img.shields.io/docker/pulls/ryanwclark/formio.svg)](https://hub.docker.com/r/ryanwclark/formio)
+[![Docker Stars](https://img.shields.io/docker/stars/ryanwclark/formio.svg)](https://hub.docker.com/r/ryanwclark/formio)
 
 ## Introduction
 
