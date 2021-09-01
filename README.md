@@ -12,10 +12,6 @@ This Container uses customized [Alpine](https://hub.docker.com/r/ryanwclark/alpi
 
 [Changelog](CHANGELOG.md)
 
-## Authors
-
-- [Ryan Clark](https://github.com/ryanwclark)
-
 ## Table of Contents
 
 - [hub.docker.com/r/ryanwclark/formio-api](#hubdockercomrryanwclarkformio-api)
